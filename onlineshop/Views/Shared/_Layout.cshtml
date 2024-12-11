@@ -244,25 +244,12 @@
                             <div class="main_menu d-none d-lg-block">
                                 <nav>
                                     <ul class="d-flex">
-                                        <li><a class="active" href="index.html">demo</a> </li>
-                                        <li><a href="shop.html">shop</a></li>
-                                        <li><a href="product-details.html">product</a></li>
-                                        <li><a href="#">sale</a></li>
-                                        <li>
-                                            <a href="#">pages</a>
-                                            <ul class="sub_menu">
-                                                <li><a href="cart.html">Cart Pages</a></li>
-                                                <li><a href="checkout.html">Checkout Pages</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="blog.html">blog</a>
-                                            <ul class="sub_menu">
-                                                <li><a href="blog.html">Blog Pages</a></li>
-                                                <li><a href="blog-details.html">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">buy</a></li>
+                                        @foreach (var menus_row in top_menus)
+                                        {
+                                            <li>
+                                                <a href="@menus_row.Link">@menus_row.MenuTitle</a>
+                                            </li>
+                                        }
                                     </ul>
                                 </nav>
                             </div>
@@ -332,11 +319,15 @@
                     <div class="footer_widget_list text-right">
                         <div class="footer_menu">
                             <ul class="d-flex justify-content-end">
-                                <li><a href="index.html">home</a></li>
-                                <li><a href="shop.html">Shop</a></li>
-                                <li><a href="product-details.html">Product</a></li>
-                                <li><a href="#">pages</a></li>
-                                <li><a href="blog.html">Blog</a></li>
+                                @{
+                                    var bottom_menus = _context.Menus.Where(row => row.Type == "Bottom").ToList();
+                                }
+                                @foreach (var menus_row in bottom_menus)
+                                {
+                                    <li>
+                                        <a href="@menus_row.Link">@menus_row.MenuTitle</a>
+                                    </li>
+                                }
                             </ul>
                         </div>
                         <div class="footer_social">

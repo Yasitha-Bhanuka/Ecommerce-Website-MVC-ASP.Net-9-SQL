@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@inject onlineshop.Models.Db.OnlineshopContext _context;
+<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
@@ -86,32 +87,15 @@
                         </div>
                         <div id="menu" class="text-left ">
                             <ul class="offcanvas_main_menu">
-                                <li class="menu-item-has-children active">
-                                    <a href="#">Home</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="shop.html">Shop</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="product-details.html"> Product Details</a>
-                                </li>
-                                <li><a href="#">sale</a></li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">pages </a>
-                                    <ul class="sub-menu">
-                                        <li><a href="cart.html">cart</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">blog</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="blog-details.html">blog details</a></li>
-                                    </ul>
-
-                                </li>
-                                <li><a href="#">buy</a></li>
+                                @{
+                                    var top_menus = _context.Menus.Where(row => row.Type == "Top").ToList();
+                                }
+                                @foreach (var menus_row in top_menus)
+                                {
+                                    <li>
+                                        <a href="@menus_row.Link">@menus_row.MenuTitle</a>
+                                    </li>
+                                }                      
                             </ul>
                         </div>
                     </div>

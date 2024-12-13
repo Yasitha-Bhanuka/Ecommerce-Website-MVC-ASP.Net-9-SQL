@@ -65,7 +65,7 @@ namespace onlineshop.Areas.Admin.Controllers
                     banner.ImageName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(ImageFile.FileName);
                     string fn;
                     fn = Directory.GetCurrentDirectory();
-                    string ImagePath = Path.Combine(fn + "\\wwwroot\\images\\banners\\" + banner.ImageName);
+                    string ImagePath = fn + "\\wwwroot\\images\\banners\\" + banner.ImageName;
 
                     using (var stream = new FileStream(ImagePath, FileMode.Create))
                     {

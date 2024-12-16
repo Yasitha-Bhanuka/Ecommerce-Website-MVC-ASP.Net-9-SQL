@@ -98,21 +98,21 @@
         <div class="banner_container d-flex justify-content-between" style="gap: 30px;">
             @if (banners != null)
             {
-            var banner_list = banners.Where(x => x.Position == "Banner1").OrderBy(x => x.Priority).ToList();
-            foreach (var item in banner_list)
-            {
-            <figure class="single_banner position-relative">
-            <img src="/images/banners/@item.ImageName" alt="">
-            <figcaption class="banner_text position-absolute">
-                <h3>@item.Title</h3>
-                <p>@item.SubTitle</p>
-                @if (!String.IsNullOrEmpty(item.Link))
+                var banner_list = banners.Where(x => x.Position == "Banner1").OrderBy(x => x.Priority).ToList();
+                foreach (var item in banner_list)
                 {
-                <a class="btn btn-primary" href="@item.Link">Shop Now</a>
+                    <figure class="single_banner position-relative">
+                    <img src="~/images/banners/@item.ImageName" alt="@item.ImageName">
+                    <figcaption class="banner_text position-absolute">
+                        <h3>@item.Title</h3>
+                        <p>@item.SubTitle</p>
+                        @if (!String.IsNullOrEmpty(item.Link))
+                        {
+                        <a class="btn btn-primary" href="@item.Link">Shop Now</a>
+                        }
+                    </figcaption>
+                    </figure>
                 }
-            </figcaption>
-            </figure>
-            }
             }
         </div>
     </div>
@@ -2160,28 +2160,26 @@
 <section class="banner_section banner_style2 mb-109">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <figure class="single_banner position-relative">
-                    <img src="assets/img/bg/bg3.jpg" alt="">
-                    <div class="banner_text position-absolute">
-                        <h3>Minimalist <br> sneaker</h3>
-                        <p>Stretch, fresh-cool help you alway <br> comfortable</p>
-                        <a class="btn btn-primary" href="shop.html">Shop Now</a>
+            @if (banners != null)
+            {
+                var banner2_list = banners.Where(x => x.Position == "Banner2").OrderBy(x => x.Priority).ToList();
+                foreach (var item in banner2_list)
+                {
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <figure class="single_banner position-relative">
+                            <img src="~/images//banners/@item.ImageName" alt="@item.ImageName">
+                            <div class="banner_text position-absolute">
+                                <h3>@item.Title</h3>
+                                <p>@item.SubTitle</p>
+                                @if (!String.IsNullOrEmpty(item.Link))
+                                {
+                                    <a class="btn btn-primary" href="@item.Link">Shop Now</a>
+                                }
+                            </div>
+                        </figure>
                     </div>
-
-                </figure>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <figure class="single_banner position-relative">
-                    <img src="assets/img/bg/bg4.jpg" alt="">
-                    <div class="banner_text position-absolute text__style2">
-                        <h3><span>50%</span> OFF <br> for Autumn</h3>
-                        <p>Stretch, fresh-cool help you alway <br> comfortable</p>
-                        <a class="btn btn-primary" href="shop.html">Shop Now</a>
-                    </div>
-
-                </figure>
-            </div>
+                }
+            }         
         </div>
     </div>
 </section>
